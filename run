@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -ex
+
+# This is the master script for the capsule. When you click "Reproducible Run", the code in this file will execute.
+
+python3 -u train_and_test_methods.py "$@"
+matlab -n/odisplay -r "addpath(genpath('.')); FeatureSet1Extraction"
+python3 -u /code/Extracting_features/extract_features.py "$@"
+python3 -u train_and_test_methods2.py "$@"
+
+
+
+
+
